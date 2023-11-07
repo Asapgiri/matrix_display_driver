@@ -1,0 +1,13 @@
+../Core/Src/ledmatrix_driver.c:150:6:send_command	24	static
+../Core/Src/ledmatrix_driver.c:161:6:send_data	24	static
+../Core/Src/ledmatrix_driver.c:180:6:send_data_rows	24	static
+../Core/Src/ledmatrix_driver.c:193:6:ledmx_init	32	static
+../Core/Src/ledmatrix_driver.c:238:6:ledmx_text	32	static
+../Core/Src/ledmatrix_driver.c:250:6:ledmx_setup_shift_text	64	static
+../Core/Src/ledmatrix_driver.c:278:13:text_redraw	24	static
+../Core/Src/ledmatrix_driver.c:319:6:ledmx_shift_text	32	static
+../Core/Src/ledmatrix_driver.c:344:6:ledmx_set_text_dir	16	static
+../Core/Src/ledmatrix_driver.c:348:6:ledmx_text_speed_up	20	static
+../Core/Src/ledmatrix_driver.c:357:6:ledmx_text_slow_down	20	static
+../Core/Src/ledmatrix_driver.c:366:6:ledmx_display	16	static
+../Core/Src/ledmatrix_driver.c:380:6:ledmx_clear	8	static
