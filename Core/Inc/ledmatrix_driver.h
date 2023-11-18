@@ -44,17 +44,45 @@ struct shift_text {
     uint                space;
 };
 
+/// Initialize LED Matrix driver
+/// 
+/// input hspi:         SPI interface
+/// input s_width:      Number of difplays horiyontally
+/// input s_height:     Number of difplays vertically
+/// input odd_inverted: Are second lines inverted? (Can be better to wire) (not used)
 void ledmx_init(SPI_HandleTypeDef* hspi, uint s_width, uint s_height, char odd_inverted);
 
-// x, y, width and heights are in pixel.
-//void ledmx_draw(uint8_t* data, uint x, uint y, uint width, uint height);
+/// Set constans text to display
+/// 
+/// input text:         Text to dispay
 void ledmx_text(const char* text);
+
+/// Set shifting constans text to display
+/// 
+/// input text:         Text to dispay
+/// input space:        Number of spaces until repeate
+/// input direction:    Shift direction
+/// input ms:           Shift interval in microseconsd
 void ledmx_setup_shift_text(const char* text, uint space, enum ledmx_text_dir direction, uint ms);
+
+/// Set shifting text direction on the fly
+/// 
+/// input direction:    New shifting direction
 void ledmx_set_text_dir(enum ledmx_text_dir direction);
+
+/// Rerender shifting text in internal buffer
 void ledmx_shift_text(void);
+
+/// Increase shift sepeed with SHIFT_MS_STEP
 void ledmx_text_speed_up(void);
+
+/// Decrease shift sepeed with SHIFT_MS_STEP
 void ledmx_text_slow_down(void);
+
+/// Display internal buffer on LED Matrixes
 void ledmx_display(void);
+
+/// Clear internal buffer
 void ledmx_clear(void);
 
 

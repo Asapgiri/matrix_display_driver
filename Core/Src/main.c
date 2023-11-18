@@ -94,7 +94,8 @@ int main(void)
   ledmx_init(&hspi1, LEDMATRIX_SEGMENTS_W, LEDMATRIX_SEGMENTS_H, true);
   ledmx_clear();
   //ledmx_text("Hello World!");
-  ledmx_setup_shift_text("Hello", 5, left, 100);
+  //ledmx_setup_shift_text("Hello", 5, left, 100);
+  ledmx_setup_shift_text("!@#$%^&*()-=+_.\\/;:'\"[]{}|<,.>?`~", 3, left, 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */

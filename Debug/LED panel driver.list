@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         000027e0  08000188  08000188  00010188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00001048  08002968  08002968  00012968  2**2
+  2 .rodata       00001064  08002968  08002968  00012968  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  080039b0  080039b0  0002005c  2**0
+  3 .ARM.extab    00000000  080039cc  080039cc  0002005c  2**0
                   CONTENTS
-  4 .ARM          00000000  080039b0  080039b0  0002005c  2**0
+  4 .ARM          00000000  080039cc  080039cc  0002005c  2**0
                   CONTENTS
-  5 .preinit_array 00000000  080039b0  080039b0  0002005c  2**0
+  5 .preinit_array 00000000  080039cc  080039cc  0002005c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  080039b0  080039b0  000139b0  2**2
+  6 .init_array   00000004  080039cc  080039cc  000139cc  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  080039b4  080039b4  000139b4  2**2
+  7 .fini_array   00000004  080039d0  080039d0  000139d0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000005c  20000000  080039b8  00020000  2**2
+  8 .data         0000005c  20000000  080039d4  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000224  20000060  08003a14  00020060  2**3
+  9 .bss          00000224  20000060  08003a30  00020060  2**3
                   ALLOC
- 10 ._user_heap_stack 00000604  20000284  08003a14  00020284  2**0
+ 10 ._user_heap_stack 00000604  20000284  08003a30  00020284  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002005c  2**0
                   CONTENTS, READONLY
@@ -389,7 +389,7 @@ void ledmx_text(const char* text) {
  80003d6:	bd80      	pop	{r7, pc}
  80003d8:	20000090 	.word	0x20000090
  80003dc:	20000080 	.word	0x20000080
- 80003e0:	08002970 	.word	0x08002970
+ 80003e0:	0800298c 	.word	0x0800298c
 
 080003e4 <ledmx_setup_shift_text>:
 
@@ -797,7 +797,7 @@ static void text_redraw(void) {
  80006a8:	4770      	bx	lr
  80006aa:	bf00      	nop
  80006ac:	20000098 	.word	0x20000098
- 80006b0:	08002970 	.word	0x08002970
+ 80006b0:	0800298c 	.word	0x0800298c
  80006b4:	20000090 	.word	0x20000090
  80006b8:	20000080 	.word	0x20000080
 
@@ -1107,10 +1107,11 @@ int main(void)
   ledmx_clear();
  80008ac:	f7ff ffda 	bl	8000864 <ledmx_clear>
   //ledmx_text("Hello World!");
-  ledmx_setup_shift_text("Hello", 5, left, 100);
+  //ledmx_setup_shift_text("Hello", 5, left, 100);
+  ledmx_setup_shift_text("!@#$%^&*()-=+_.\\/;:'\"[]{}|<,.>?`~", 3, left, 100);
  80008b0:	2364      	movs	r3, #100	; 0x64
  80008b2:	2200      	movs	r2, #0
- 80008b4:	2105      	movs	r1, #5
+ 80008b4:	2103      	movs	r1, #3
  80008b6:	481f      	ldr	r0, [pc, #124]	; (8000934 <main+0xa8>)
  80008b8:	f7ff fd94 	bl	80003e4 <ledmx_setup_shift_text>
   while (1)
@@ -2001,7 +2002,7 @@ LoopForever:
   ldr r1, =_edata
  8000cdc:	2000005c 	.word	0x2000005c
   ldr r2, =_sidata
- 8000ce0:	080039b8 	.word	0x080039b8
+ 8000ce0:	080039d4 	.word	0x080039d4
   ldr r2, =_sbss
  8000ce4:	20000060 	.word	0x20000060
   ldr r4, =_ebss
@@ -3699,7 +3700,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
  800168c:	e014      	b.n	80016b8 <HAL_RCC_OscConfig+0x298>
  800168e:	bf00      	nop
  8001690:	40021000 	.word	0x40021000
- 8001694:	08003970 	.word	0x08003970
+ 8001694:	0800398c 	.word	0x0800398c
  8001698:	20000000 	.word	0x20000000
  800169c:	20000004 	.word	0x20000004
  80016a0:	4ba0      	ldr	r3, [pc, #640]	; (8001924 <HAL_RCC_OscConfig+0x504>)
@@ -5004,7 +5005,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8001dc2:	bd80      	pop	{r7, pc}
  8001dc4:	40022000 	.word	0x40022000
  8001dc8:	40021000 	.word	0x40021000
- 8001dcc:	08003970 	.word	0x08003970
+ 8001dcc:	0800398c 	.word	0x0800398c
  8001dd0:	20000000 	.word	0x20000000
  8001dd4:	20000004 	.word	0x20000004
 
@@ -5209,7 +5210,7 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
  8001edc:	4770      	bx	lr
  8001ede:	bf00      	nop
  8001ee0:	40021000 	.word	0x40021000
- 8001ee4:	08003980 	.word	0x08003980
+ 8001ee4:	0800399c 	.word	0x0800399c
  8001ee8:	00f42400 	.word	0x00f42400
  8001eec:	007a1200 	.word	0x007a1200
 
@@ -6839,10 +6840,10 @@ static HAL_StatusTypeDef SPI_EndRxTxTransaction(SPI_HandleTypeDef *hspi, uint32_
  800288e:	4798      	blx	r3
  8002890:	3601      	adds	r6, #1
  8002892:	e7f2      	b.n	800287a <__libc_init_array+0x1e>
- 8002894:	080039b0 	.word	0x080039b0
- 8002898:	080039b0 	.word	0x080039b0
- 800289c:	080039b0 	.word	0x080039b0
- 80028a0:	080039b4 	.word	0x080039b4
+ 8002894:	080039cc 	.word	0x080039cc
+ 8002898:	080039cc 	.word	0x080039cc
+ 800289c:	080039cc 	.word	0x080039cc
+ 80028a0:	080039d0 	.word	0x080039d0
 
 080028a4 <__retarget_lock_acquire_recursive>:
  80028a4:	4770      	bx	lr

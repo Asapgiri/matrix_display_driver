@@ -206,34 +206,10 @@ void ledmx_init(SPI_HandleTypeDef* _hspi, uint s_width, uint s_height, char _odd
 	send_command(SCAN_LIMIT, 7);
 	send_command(INTENSITY, 4);
 	send_command(ENABLE, 1);
-	send_command(0xC, 1);
     for (i = 0; i < segments; i++) {
         send_command(0, 0);
     }
 }
-
-//void ledmx_draw(uint8_t* data, uint x, uint y, uint width, uint height) {
-//	uint i, j;
-//	uint x_offset = x / SEGMENT_RES;
-//	uint x_diff = x % SEGMENT_RES;
-//	uint w_offset = (x + width) / SEGMENT_RES;
-//	uint h_offset = (y + height);
-//
-//	uint8_t temp;
-//
-//
-//	for (i = 0; i < (w_offset - x_offset); i++) {
-//		if (i) {
-//			temp = (data[i-1] << (8-x_diff)) | (data[i] >> x_diff);
-//		}
-//		else {
-//			temp = PIXEL_ARRAY[y*seg_width + x_offset + i];
-//			temp = temp & (0xff << (8-x_diff)) | (data[i] >> x_diff);
-//		}
-//		PIXEL_ARRAY[y*seg_width + x_offset + i] = temp;
-//	}
-//
-//}
 
 void ledmx_text(const char* text) {
     char* c = text;
